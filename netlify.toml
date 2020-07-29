@@ -1,15 +1,6 @@
 [[redirects]]
   from = "/"
-  to = "/"
-  status = 301
-  force = false
-  query = {path = ":path"}
-  conditions = {Language = ["en"], Country = ["US"], Role = ["admin"]}
-
-[[redirects]]
-  from = "/"
   to = "https://peaceful-mayer-162236.netlify.app/"
   status = 200
-  force = true # COMMENT: ensure that we always redirect
-  headers = {X-From = "Netlify"}
+  force = true
   signed = "API_SIGNATURE_TOKEN"
