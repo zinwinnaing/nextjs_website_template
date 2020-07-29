@@ -1,6 +1,26 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 
+const encode = (data) => {
+  return Object.keys(data)
+    .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+    .join("&");
+};
+
+const handleSubmit = (e) => {
+  fetch("/", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: encode({ "form-name": "contact", ...this.state }),
+  })
+    .then(() => alert("Success!"))
+    .catch((error) => alert(error));
+
+  e.preventDefault();
+};
+
+const handleChange = (e) => this.setState({ [e.target.name]: e.target.value });
+
 const Home = () => {
   return (
     <div className={styles.container}>
@@ -10,40 +30,38 @@ const Home = () => {
       </Head>
 
       <main className={styles.main}>
-        <form
-          name="contact"
-          method="POST"
-          data-netlify="true"
-          netlify="true"
-          action="/"
-          data-netlify-recaptcha="true"
-        >
+        <form onSubmit={this.handleSubmit}>
           <p>
             <label>
-              Your Name: <input type="text" name="name" />
+              Your Name:{" "}
+              <input
+                type="text"
+                name="name"
+                value={name}
+                onChange={this.handleChange}
+              />
             </label>
           </p>
           <p>
             <label>
-              Your Email: <input type="email" name="email" />
+              Your Email:{" "}
+              <input
+                type="email"
+                name="email"
+                value={email}
+                onChange={this.handleChange}
+              />
             </label>
           </p>
           <p>
             <label>
-              Your Role:{" "}
-              <select name="role[]" multiple>
-                <option value="leader">Leader</option>
-                <option value="follower">Follower</option>
-              </select>
+              Message:{" "}
+              <textarea
+                name="message"
+                value={message}
+                onChange={this.handleChange}
+              />
             </label>
-          </p>
-          <p>
-            <label>
-              Message: <textarea name="message"></textarea>
-            </label>
-          </p>
-          <p>
-            <div data-netlify-recaptcha="true"></div>
           </p>
           <p>
             <button type="submit">Send</button>
