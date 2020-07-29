@@ -16,6 +16,7 @@ const Home = () => {
           data-netlify="true"
           netlify="true"
           action="/"
+          data-netlify-recaptcha="true"
         >
           <p>
             <label>
@@ -40,6 +41,9 @@ const Home = () => {
             <label>
               Message: <textarea name="message"></textarea>
             </label>
+          </p>
+          <p>
+            <div data-netlify-recaptcha="true"></div>
           </p>
           <p>
             <button type="submit">Send</button>
