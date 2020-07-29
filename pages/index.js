@@ -10,7 +10,7 @@ const Home = () => {
       </Head>
 
       <main className={styles.main}>
-        <form name="contact" netlify>
+        <form name="contact" netlify="true">
           <p>
             <label>
               Name <input type="text" name="name" />
