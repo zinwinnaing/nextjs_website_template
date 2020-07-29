@@ -1,6 +1,4 @@
-# [[redirects]]
-#   from = "/"
-#   to = "https://peaceful-mayer-162236.netlify.app/"
-#   status = 200
-#   force = true
-#   signed = "API_SIGNATURE_TOKEN"
+[[redirects]]
+  from = "/*"
+  to = "/index.js"
+  status = 200
